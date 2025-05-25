@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodels/device_detail_viewmodel.dart';
 import '../models/sensor.dart';
+import 'sensor_chart_page.dart';
 
 class DeviceDetailPage extends StatelessWidget {
   final String deviceId;
@@ -48,6 +49,20 @@ class DeviceDetailPage extends StatelessWidget {
                       leading: Icon(_getIcon(sensor.type), color: Theme.of(context).colorScheme.primary, size: 32),
                       title: Text(_getLabel(sensor.type), style: Theme.of(context).textTheme.titleMedium),
                       trailing: Text(sensor.value.toStringAsFixed(1), style: Theme.of(context).textTheme.titleLarge),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ChangeNotifierProvider.value(
+                              value: Provider.of<DeviceDetailViewModel>(context, listen: false),
+                              child: SensorChartPage(
+                                sensorType: sensor.type,
+                                deviceName: deviceName,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   );
                 }).toList(),

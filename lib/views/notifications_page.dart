@@ -6,9 +6,9 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final notifications = [
-      'Sensor Living Room: Temperatura alta detectada',
-      'Sensor Bedroom: Humedad baja detectada',
-      'Sensor Kitchen: Todo normal',
+      'Dispositivo Sensor Invernadero 1 - Derecha: Temperatura alta detectada',
+      'Dispositivo Sensor Invernadero 1 - Izquierda: Humedad baja detectada',
+      'Dispositivo Sensor Invernadero 2',
     ];
     return Container(
       color: Theme.of(context).colorScheme.surfaceVariant,

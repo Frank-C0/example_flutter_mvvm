@@ -18,14 +18,17 @@ class DeviceService {
   Stream<List<Sensor>> getSensorData(String deviceId) {
     final random = Random();
     return Stream.periodic(const Duration(seconds: 1), (_) {
+      final now = DateTime.now();
       return [
         Sensor(
           type: SensorType.temperature,
           value: 20 + random.nextDouble() * 10,
+          timestamp: now,
         ),
         Sensor(
           type: SensorType.humidity,
           value: 40 + random.nextDouble() * 20,
+          timestamp: now,
         ),
       ];
     });
